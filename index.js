@@ -85,10 +85,10 @@ ProxyKeystone.middleware = function (req, res, next) {
   catalog = ProxyKeystone.getValueByString(req, options.catalog);
 
   if(!token){
-    return res.json(403, {error: 'Missing token'});
+    return next(new Error('Missing token'));
   }
   if (!catalog) {
-    return res.json(400, {error: 'Missing Service Catalog'});
+    return next(new Error('Missing Service Catalog'));
   }
 
   // begin req.url transformation
@@ -103,13 +103,13 @@ ProxyKeystone.middleware = function (req, res, next) {
 
   // check if service exists
   if (!service){
-    return res.json(404, {error: 'Service Catalog Item Not Found'});
+    return next(new Error('Service Catalog Item Not Found'));
   }
 
   endpoint = ProxyKeystone.findEndpoint(serviceInfo, service);
 
   if (!endpoint) {
-    return res.json(404, {error: 'Endpoint Not Found In ' + service.name});
+    return next(new Error('Endpoint Not Found In ' + service.name));
   }
 
   // url.parse creates an object
