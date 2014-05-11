@@ -1,6 +1,6 @@
 {
   "name": "proxy-keystone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An proxy for keystone service catalog endpoints built on top of http-proxy.",
   "main": "index.js",
   "homepage": "https://github.com/eddywashere/proxy-keystone",
@@ -16,7 +16,14 @@
   },
   "license": "MIT",
   "keywords": [
-    "proxy-keystone"
+    "proxy",
+    "openstack",
+    "rackspace",
+    "keystone",
+    "identity",
+    "express",
+    "middleware",
+    "connect"
   ],
   "dependencies": {
     "http-proxy": "^1.1.3",
