@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
   req.user = {
     token: '12345678910',
     serviceCatalog:[{
-      name:"swift"
+      name:"swift",
       endpoints:[{
         "region":"RegionOne",
         "internalURL":"http://127.0.0.1:8080/v1/AUTH_1",
@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.all('/proxy/*', proxyKeystone();
+app.all('/proxy/*', proxyKeystone());
 
 var server = app.listen(3000, function() {
   console.log('Listening on port %d', server.address().port);
@@ -47,7 +47,7 @@ app.use(function(req, res, next) {
   req.current_user = {
     key: '12345678910',
     catalog:[{
-      name:"swift"
+      name:"swift",
       endpoints:[{
         "region":"RegionOne",
         "internalURL":"http://127.0.0.1:8080/v1/AUTH_1",
@@ -62,5 +62,5 @@ app.all('/proxy/*', proxyKeystone({
   token: 'current_user.key', // req.current_user.key
   catalog: 'current_user.catalog', // req.current_user.catalog
   userAgent: 'Custom Openstack Dashboard' // forwarded in proxy headers
-});
+}));
 ```
