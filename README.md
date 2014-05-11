@@ -1,12 +1,18 @@
-# proxy-keystone
+# Proxy-Keystone
 
 A proxy for OpenStack Keystone service catalog endpoints built on top of http-proxy.
 
-## Getting Started
+## Installation
 
-Install the module with: `npm install proxy-keystone`
+```sh
+npm install proxy-keystone
+```
 
-## Example Usage
+## [Example](https://passport-keystone-proxy.herokuapp.com/)
+
+Check out the [live demo](https://passport-keystone-proxy.herokuapp.com/), source code [here](https://github.com/eddywashere/passport-keystone/tree/master/examples), to see an express app configured for authentication with the [Rackspace Cloud Identity Service](http://docs.rackspace.com/auth/api/v2.0/auth-client-devguide/content/QuickStart-000.html) and [Passport-Keystone](https://github.com/eddywashere/passport-keystone).
+
+## Documentation
 
 ```javascript
 var express = require('express');
