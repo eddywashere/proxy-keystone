@@ -1,11 +1,3 @@
-/*
- * proxy-keystone
- * https://github.com/eddywashere/proxy-keystone
- *
- * Copyright (c) 2014 Eddy Hernandez
- * Licensed under the MIT license.
- */
-
 'use strict';
 
 var Url = require('url'),

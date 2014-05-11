@@ -1,6 +1,6 @@
 # proxy-keystone
 
-A proxy for Keystone Service Catalog Endpoints built on top of http-proxy.
+A proxy for OpenStack Keystone service catalog endpoints built on top of http-proxy.
 
 ## Getting Started
 
