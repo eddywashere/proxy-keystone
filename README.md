@@ -17,7 +17,8 @@ Check out the [live demo](https://passport-keystone-proxy.herokuapp.com/), sourc
 ```javascript
 var express = require('express');
 var app = express();
-var proxyKeystone = require('proxy-keystone');
+var ProxyKeystone = require('proxy-keystone');
+var proxyKeystone = new ProxyKeystone();
 
 // proxy-keystone requires you to bring your own authentication middleware
 // it should set req.user with a token and service catalog
@@ -36,7 +37,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.all('/proxy/*', proxyKeystone());
+app.all('/proxy/*', proxyKeystone.middleware);
 
 var server = app.listen(3000, function() {
   console.log('Listening on port %d', server.address().port);
@@ -64,9 +65,32 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.all('/proxy/*', proxyKeystone({
+var ProxyKeystone = require('proxy-keystone');
+var proxyKeystone = new ProxyKeystone({
   token: 'current_user.key', // req.current_user.key
   catalog: 'current_user.catalog', // req.current_user.catalog
   userAgent: 'Custom Openstack Dashboard' // forwarded in proxy headers
-}));
+});
+
+app.all('/proxy/*', proxyKeystone.middleware);
+```
+
+### Listening for proxy events
+
+- `proxyStart` - This event is emitted when the proxy starts.
+- `proxyEnd` - This event is emitted if the request to the target completed.
+- `proxyError` - The error event is emitted if the request to the target fail.
+
+```js
+proxyKeystone.on('proxyStart',function(req, res, target){
+  console.log(req.url);
+});
+
+proxyKeystone.on('proxyEnd',function(req, res, proxyRes){
+  console.log('RAW Response from the target', JSON.stringify(proxyRes.headers, true, 2));
+});
+
+proxyKeystone.on('proxyError',function(err){
+  console.log(err.message);
+});
 ```
