@@ -1,7 +1,7 @@
 'use strict';
 
 var Url = require('url'),
-util = require('util');
+util = require('util'),
 EventEmitter = require('events').EventEmitter,
 httpProxy = require('http-proxy'),
 _ = require('lodash'),
