@@ -1,6 +1,6 @@
 {
   "name": "proxy-keystone",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A proxy for OpenStack Keystone service catalog endpoints built on top of http-proxy.",
   "main": "index.js",
   "homepage": "https://github.com/eddywashere/proxy-keystone",

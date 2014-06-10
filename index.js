@@ -49,9 +49,13 @@ ProxyKeystone = function(customOptions){
   };
 
   self.getServiceByName = function (name, catalog) {
-    return _.find(catalog, function(item) {
-      return name === item.name;
-    });
+    if (catalog instanceof Array) {
+      return _.find(catalog, function(item) {
+        return name === item.name;
+      });
+    } else {
+      return catalog[name];
+    }
   };
 
   self.findEndpoint = function (serviceInfo, service) {
